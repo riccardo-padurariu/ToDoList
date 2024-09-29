@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <title>ToDoList</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <header class="header">
+    <div class="greet-container">
+      <p class="greet">Hello User</p>
+    </div>
+    <div class="buttons">
+      <div class="login-button-container">
+        <button class="login-button">
+          Login
+        </button>
+      </div>
+      <div class="signup-button-container">
+        <button class="signup-button">
+          Register
+        </button>
+      </div>
+      <div class="add-button-container">
+        <button class="add-button">
+          Add Task
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <div class="mini-header">
+      <div class="numerotation-container-mini-header">
+        <p class="mini-header-p">Nr</p>
+      </div>
+      <div class="task-name-container">
+        <p class="mini-header-p">Task name</p>
+      </div>
+      <div class="due-date">
+        <p class="mini-header-p">Due date</p>
+      </div>
+      <div class="status-container">
+        <p class="mini-header-p">Status</p>
+      </div>
+    </div>
+    <div class="task-flexbox">
+      
+    </div>
+  </main>
+  <div class="add-task">
+    <div class="add-task-modal">
+      <div class="task-modal-container">
+        <p class="title-modal">Add a task</p>
+        <button class="exit-button">x</button>
+      </div>
+      <div class="task-modal-container">
+        <p class="caption-modal">Add task name: </p>
+        <input class="input-task task-name-js" type="text" placeholder="Enter here the task name">
+        <p class="error-p name-error-js"></p>
+      </div>
+      <div class="task-modal-container">
+        <p class="caption-modal">Add due date: </p>
+        <input class="input-task task-date-js" type="date">
+        <p class="error-p date-error-js"></p>
+      </div>
+
+      <div>
+        <button class="add-task-modal-button">Add</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
