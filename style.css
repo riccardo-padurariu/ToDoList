@@ -121,7 +121,7 @@ body{
 
 .tasks-container{
   display: grid;
-  grid-template-columns: 100px 500px 260px 205px 100px;
+  grid-template-columns: 100px 500px 260px 205px 150px 100px;
   align-items: center;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -154,10 +154,21 @@ body{
   color: rgb(253, 45, 45);
 }
 
+.add-button:active,
+.delete-button:active,
+.add-task-modal-button:active,
+.signup-button:active,
+.login-button:active,
+.edit-button:active,
+.exit-button:active{
+  opacity: 0.5;
+}
+
 .status-corner{
   border-radius: 0% 10% 10% 0%;
 }
 
+.edit-task,
 .add-task{
   position: fixed;
   background-color: rgba(0,0,0,0.2);
@@ -168,6 +179,25 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.edit-button{
+  background-color: rgb(30, 113, 215);
+  width: 90px;
+  padding: 12px 28px;
+  color: white;
+  border: none;
+  border-radius: 19px;
+  cursor: pointer;
+  font-family: Roboto,Arial;
+  box-shadow: 0 0 15px rgba(0,0,0,0.35);
+  transition: background-color 0.35s,
+  color 0.35s; 
+}
+
+.edit-button:hover{
+  background-color: white;
+  color: rgb(30, 113, 215);
 }
 
 /*Desining the modal for adding a task*/
@@ -226,6 +256,7 @@ body{
   color: rgb(26, 122, 248);
 }
 
+.exit-edit-button,
 .exit-button{
   margin-left: 580px;
   background-color: white;
@@ -239,6 +270,7 @@ body{
   cursor: pointer;
 }
 
+.edit-task,
 .add-task{
   opacity: 0;
   z-index: -1;
