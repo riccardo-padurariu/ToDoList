@@ -1,3 +1,5 @@
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+
 const arrayList = [];
 
 function update(){
@@ -18,7 +20,7 @@ function update(){
             <p class="task-attribute status-corner">${attribute.status}</p>
           </div>
           <div class="delete-buttons-container">
-            <button class="delete-button" onclick="arrayList.splice(${index},1);update();">Delete</button>
+            <button class="delete-button" >Delete</button>
           </div>
           <div class="edit-buttons-container">
             <button class="edit-button" onclick="
@@ -33,11 +35,42 @@ function update(){
           </div>
       </div>
     `;
+
   });
+  
   document.querySelector('.task-flexbox')
     .innerHTML = HTMLList;
+
+  document.querySelectorAll('.delete-button')
+  .forEach((deleteButton, ind) => {
+    deleteButton.addEventListener('click', () => {
+      arrayList.splice(ind,1);
+      update();
+    });
+  });
 }
 
+
+function checkDate(date){
+  let sta = 'OK';
+  // The status is based on the current date and the due date
+  const curr_date = dayjs();
+  const due_date = dayjs(date);
+  const curr_date_day = Number(curr_date.format('D')),curr_date_month = Number(curr_date.format('M')),curr_date_year = Number(curr_date.format('YYYY'));
+  const due_date_day = Number(due_date.format('D')),due_date_month = Number(due_date.format('M')),due_date_year = Number(due_date.format('YYYY'));
+
+  if(curr_date_year - due_date_year > 0)
+    return 'ERROR';
+  if(curr_date_month - due_date_month > 0 && curr_date_year === due_date_year)
+    return 'ERROR';
+  if(curr_date_day - due_date_day > 0 && curr_date_month === due_date_month)
+    return 'ERROR';
+
+  if(curr_date_day === due_date_day && curr_date_month === due_date_month)
+    return 'DUE SOON';
+
+  return 'OK';
+}
 
   document.querySelector('.add-button')
     .addEventListener('click',() => {
@@ -69,8 +102,6 @@ function update(){
         .innerHTML = '';
       document.querySelector('.date-error-js')
         .innerHTML = '';
-      //document.querySelector('.task-name-js').value = '';
-      //document.querySelector('.task-date-js').value = '';
     });
 
   document.querySelector('.add-task-modal-button')
@@ -80,24 +111,14 @@ function update(){
       const date = document.querySelector('.task-date-js');
       // Checking if the inputs aren't null
       if(name.value !== '' && date.value !== ''){
-        // The status is based on the current date and the due date
-        const curr_date = new Date(); // getting the current date
-        const due = new Date(date.value); // transforming the due date from a string into a class object
         let sta = '';
-        if((due.getFullYear() === curr_date.getFullYear()) && (due.getMonth() === curr_date.getMonth()) && (due.getDay()-curr_date.getDay()===1)){
-          sta = 'DUE SOON';
-        }else if((due.getFullYear() === curr_date.getFullYear()) && (due.getMonth() === curr_date.getMonth()) && (due.getDay()-curr_date.getDay()<=0)){
-          document.querySelector('.date-error-js')
-            .innerHTML = '*Enter a valid task date';
-          sta = 'ERROR';
-        }else{
-          sta = 'OK';
-        }
+        sta = checkDate(date.value);
+
         if(sta === 'OK' || sta === 'DUE SOON'){
           const task = {
             name: name.value,
             due_date: date.value,
-              status: sta
+            status: sta
           };
           arrayList.push(task);
           update();
@@ -110,6 +131,9 @@ function update(){
           // Removing the opacity from the add task section
           document.querySelector('.add-task')
             .classList.remove('home');
+          }else{
+            document.querySelector('.date-error-js')
+              .innerHTML = '*Enter a valid task date';
           }
       } else if(name.value === '' && date.value === ''){
         document.querySelector('.name-error-js')
@@ -134,34 +158,31 @@ function update(){
       const date = document.querySelector('.task-edit-date-js');
       // Checking if the inputs aren't null
       if(name.value !== '' && date.value !== ''){
-        // Removing the opacity from the add task section
-        document.querySelector('.edit-task')
-          .classList.remove('home');
-        // The status is based on the current date and the due date
-        const curr_date = new Date(); // getting the current date
-        const due = new Date(date.value); // transforming the due date from a string into a class object
-        let sta = '';
-        if((due.getFullYear() === curr_date.getFullYear()) && (due.getMonth() === curr_date.getMonth()) && (due.getDay()-curr_date.getDay()===1))
-          sta = 'DUE SOON';
-        else if((due.getFullYear() === curr_date.getFullYear()) && (due.getMonth() === curr_date.getMonth()) && (due.getDay()-curr_date.getDay()<=0))
-          document.querySelector('.date-error-js')
-            .innerHTML = '*Enter a valid task date';
-        else
-          sta = 'OK';
-        const task = {
-          name: name.value,
-          due_date: date.value,
-          status: sta
-        };
-        arrayList[curr_index] = task;
-        console.log(arrayList[curr_index]);
-        update();
-        name.value = '';
-        date.value = '';
-        document.querySelector('.name-error-js')
-          .innerHTML = '';
-        document.querySelector('.date-error-js')
-          .innerHTML = '';
+        let sta = checkDate(date.value);
+        console.log(sta);
+
+
+        if(sta !== 'ERROR'){
+          const task = {
+            name: name.value,
+            due_date: date.value,
+            status: sta
+          };
+          arrayList[curr_index] = task;
+          console.log(arrayList[curr_index]);
+          update();
+          name.value = '';
+          date.value = '';
+          document.querySelector('.name-error-js')
+            .innerHTML = '';
+          document.querySelector('.date-edit-error-js')
+            .innerHTML = '';
+          document.querySelector('.edit-task')
+            .classList.remove('home');
+        }else{
+          document.querySelector('.date-edit-error-js')
+            .innerHTML = '*Enter a valid task date'; 
+        }
       } else if(name.value === '' && date.value === ''){
         document.querySelector('.name-error-js')
           .innerHTML = '*Enter a task name';
