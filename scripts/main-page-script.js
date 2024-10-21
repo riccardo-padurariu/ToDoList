@@ -201,3 +201,7 @@ function checkDate(date){
         .addEventListener('click',() => {
           window.location = '../register.html';
         });
+      document.querySelector('.login-button')
+        .addEventListener('click', () => {
+          window.location = '../login.html';
+        });

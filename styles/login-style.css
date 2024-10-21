@@ -1,0 +1,111 @@
+body{
+  background-color: rgb(242,242,242);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Roboto,Arial;
+}
+
+.login-container{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.title{
+  text-align: center;
+  font-size: 25px;
+}
+
+.input-login{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+.input-p{
+  font-size: 15px;
+  text-align: start;
+  margin: 10px 0 7px 0;
+}
+
+.input-css{
+  padding: 12px;
+  width: 340px;
+  border-radius: 19px;
+  border: none;
+  background-color: rgb(242,242,242);
+}
+
+.input-check{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.login-section{
+  text-align: center;
+}
+
+.login-button{
+  padding: 10px 10px;
+  width: 280px;
+  background-color: rgb(158, 73, 238);
+  border: none;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  transition: background-color 0.35s,
+  color 0.35s;
+}
+
+.login-button:hover{
+  background-color: white;
+  color: rgb(158, 73, 238);
+}
+
+.login-button:active{
+  opacity: 0.4;
+}
+
+.p-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.validation-p{
+  margin-left: 120px;
+  opacity: 0;
+}
+
+.itsnotok{
+  font-size: 13px;
+  opacity: 1;
+  color: red;
+}
+
+.itsok{
+  margin-left: 220px;
+  font-size: 13px;
+  opacity: 1;
+  color: green;
+}
+
+.itsnotokinput{
+  border-color: red;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.itsokinput{
+  border-color: green;
+  border-style: solid;
+  border-width: 1px;
+}

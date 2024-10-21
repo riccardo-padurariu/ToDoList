@@ -1,4 +1,4 @@
-function toggleCheckPassword(){
+export function toggleCheckPassword(){
   const input = document.querySelector('.js-password');
 
   if(input.type === 'password')
