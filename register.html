@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/register-style.css">
+</head>
+<body>
+  <div class="register-container">
+    <div class="title-register">
+      <p class="title">Welcome!</p>
+    </div>
+    <div class="input-register">
+      <div class="p-container">
+        <p class="input-p">Enter username</p>
+        <p class="validation-p username-validation"></p>
+      </div>
+      <input class="input-css input-username" type="text" placeholder="Enter username">
+    </div>
+    <div class="input-register">
+      <div class="p-container">
+        <p class="input-p">Enter email</p>
+        <p style="margin-left: 250px;" class="validation-p email-validation"></p>
+      </div>
+      <input class="input-css input-email" type="text" placeholder="Enter email">
+    </div>
+    <div class="input-register">
+      <div class="p-container">
+        <p class="input-p">Enter password</p>
+        <p class="validation-p password-validation"></p>
+      </div>
+      <input class="input-css js-password input-password" type="password" placeholder="Enter password">
+    </div>
+    <div class="input-register">
+      <div class="p-container">
+        <p class="input-p">Check password</p>
+        <p class="validation-p confirmation-validation"></p>
+      </div>
+      <input class="input-css js-password input-confirmation" type="password" placeholder="Enter password">
+    </div>
+    <div class="input-check">
+      <input class="js-check-box" style="margin-top: 6px;" type="checkbox">
+      <p class="input-p">See password</p>
+    </div>
+    <div class="register-section">
+      <button class="register-button">
+        Register
+      </button>
+    </div>
+    <div class="login">
+      <p class="input-p">Do you have an account?<a href="login.html">Log in</a></p>
+    </div>
+  </div>
+  <script type="module" src="scripts/register-script.js"></script>
+</body>
+</html>

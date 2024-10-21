@@ -196,3 +196,8 @@ function checkDate(date){
           .innerHTML = '*Enter a task name';
       }
       }); 
+
+      document.querySelector('.signup-button')
+        .addEventListener('click',() => {
+          window.location = '../register.html';
+        });
