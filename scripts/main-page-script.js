@@ -1,6 +1,12 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-const arrayList = [];
+const arrayList = JSON.parse(localStorage.getItem('arrayList')) || [];
+
+function saveToStorage(){
+  localStorage.setItem('arrayList',JSON.stringify(arrayList));
+}
+
+update();
 
 function update(){
   let HTMLList = '';
@@ -46,6 +52,7 @@ function update(){
     deleteButton.addEventListener('click', () => {
       arrayList.splice(ind,1);
       update();
+      saveToStorage();
     });
   });
 }
@@ -131,6 +138,7 @@ function checkDate(date){
           // Removing the opacity from the add task section
           document.querySelector('.add-task')
             .classList.remove('home');
+          saveToStorage();
           }else{
             document.querySelector('.date-error-js')
               .innerHTML = '*Enter a valid task date';
@@ -179,6 +187,7 @@ function checkDate(date){
             .innerHTML = '';
           document.querySelector('.edit-task')
             .classList.remove('home');
+          saveToStorage();
         }else{
           document.querySelector('.date-edit-error-js')
             .innerHTML = '*Enter a valid task date'; 
