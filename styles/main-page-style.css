@@ -168,6 +168,7 @@ body{
   border-radius: 0% 10% 10% 0%;
 }
 
+.delete-task,
 .edit-task,
 .add-task{
   position: fixed;
@@ -201,6 +202,57 @@ body{
 }
 
 /*Desining the modal for adding a task*/
+
+.delete-task-modal{
+  background-color: white;
+  height: 130px;
+  width: 400px;
+  border-radius: 10px;
+  padding: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.d-p{
+  font-family: Roboto,Arial;
+  font-size: 19px;
+}
+
+.no-button{
+  margin-right: 30px;
+  background-color: rgb(163, 163, 163);
+  border: none;
+  border-radius: 25px;
+  padding: 12px 28px;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  transition: background-color 0.35s,
+  color 0.35s;
+}
+
+.no-button:hover{
+  background-color: white;
+  color: black;
+}
+
+.yes-button{
+  background-color: rgb(253, 45, 45);
+  border: none;
+  border-radius: 25px;
+  padding: 12px 28px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  transition: background-color 0.35s,
+  color 0.35s;
+}
+
+.yes-button:hover{
+  background-color: white;
+  color: rgb(253, 45, 45);
+}
 
 .add-task-modal{
   background-color: white;
@@ -270,6 +322,7 @@ body{
   cursor: pointer;
 }
 
+.delete-task,
 .edit-task,
 .add-task{
   opacity: 0;

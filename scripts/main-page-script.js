@@ -50,9 +50,28 @@ function update(){
   document.querySelectorAll('.delete-button')
   .forEach((deleteButton, ind) => {
     deleteButton.addEventListener('click', () => {
-      arrayList.splice(ind,1);
-      update();
-      saveToStorage();
+      document.querySelector('.delete-task')
+        .classList.add('home');
+
+      document.querySelectorAll('.yes-button')
+        .forEach((but) => {
+          but.addEventListener('click',() => {
+            arrayList.splice(ind,1);
+            update();
+            saveToStorage();
+
+            document.querySelector('.delete-task')
+              .classList.remove('home');
+          })
+        })
+
+      document.querySelectorAll('.no-button')
+        .forEach((but) => {
+          but.addEventListener('click',() => {
+            document.querySelector('.delete-task')
+              .classList.remove('home');
+          })
+        });
     });
   });
 }
